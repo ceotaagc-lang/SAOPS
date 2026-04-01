@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coalition for Democracy | Join the Movement</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Coalition for Democracy | United Against One-Party System</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="nav">
         <div class="container">
             <div class="nav-brand">
@@ -16,84 +18,132 @@
                     <span>Coalition for Democracy</span>
                 </a>
             </div>
-            <div class="nav-links">
-                <a href="register.html" class="btn btn-primary">Join Now</a>
-                <a href="dashboard.html" class="btn btn-outline">Login</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="register.html">Join Us</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="chat.html">Chat House</a></li>
+                    <li><a href="groups.html">Groups</a></li>
+                </ul>
+                <div class="nav-auth" id="navAuth">
+                    <a href="register.html" class="btn btn-primary">Join Now</a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Social Follow -->
     <section class="hero">
         <div class="container">
-            <h1>Stand Against One-Party System</h1>
-            <p>Join thousands of Nigerians fighting for true democracy. Follow us on social media and be part of the change.</p>
-            
-            <!-- Social Media Follow Buttons -->
-            <div class="social-follow">
-                <h3>Follow Us & Join the Movement</h3>
-                <div class="follow-buttons">
-                    <a href="https://twitter.com/CoalitionMain" target="_blank" class="follow-btn twitter">
-                        <i class="fab fa-twitter"></i>
-                        <span>Follow on X</span>
-                    </a>
-                    <a href="https://tiktok.com/@coalition" target="_blank" class="follow-btn tiktok">
-                        <i class="fab fa-tiktok"></i>
-                        <span>Follow on TikTok</span>
-                    </a>
-                    <a href="https://facebook.com/coalition" target="_blank" class="follow-btn facebook">
-                        <i class="fab fa-facebook"></i>
-                        <span>Follow on Facebook</span>
-                    </a>
-                    <a href="https://instagram.com/coalition" target="_blank" class="follow-btn instagram">
-                        <i class="fab fa-instagram"></i>
-                        <span>Follow on Instagram</span>
-                    </a>
+            <div class="hero-content">
+                <h1>Stand Against <span class="highlight">One-Party System</span></h1>
+                <p>Join the movement for democratic pluralism in Nigeria. Follow us on social media, get your official ID, and connect with thousands of patriots fighting for democracy.</p>
+                
+                <!-- Social Media Follow Section -->
+                <div class="social-follow-section">
+                    <h3>Follow Us & Join the Movement</h3>
+                    <div class="follow-buttons">
+                        <a href="https://twitter.com/CoalitionMain" target="_blank" class="follow-btn twitter" data-platform="twitter">
+                            <i class="fab fa-twitter"></i>
+                            <span>Follow on X</span>
+                            <small>@CoalitionMain</small>
+                        </a>
+                        <a href="https://tiktok.com/@coalition" target="_blank" class="follow-btn tiktok" data-platform="tiktok">
+                            <i class="fab fa-tiktok"></i>
+                            <span>Follow on TikTok</span>
+                            <small>@coalition</small>
+                        </a>
+                        <a href="https://facebook.com/coalition" target="_blank" class="follow-btn facebook" data-platform="facebook">
+                            <i class="fab fa-facebook"></i>
+                            <span>Follow on Facebook</span>
+                            <small>@coalition</small>
+                        </a>
+                        <a href="https://instagram.com/coalition" target="_blank" class="follow-btn instagram" data-platform="instagram">
+                            <i class="fab fa-instagram"></i>
+                            <span>Follow on Instagram</span>
+                            <small>@coalition</small>
+                        </a>
+                    </div>
+                    <div class="follow-status" id="followStatus">
+                        <div class="status-message">
+                            <i class="fas fa-check-circle"></i>
+                            <span>After following all platforms, you're ready to register!</span>
+                        </div>
+                    </div>
                 </div>
-                <p class="follow-note">After following, register to get your official ID Card!</p>
-            </div>
-            
-            <div class="stats">
-                <div class="stat">
-                    <span class="number" id="memberCount">0</span>
-                    <span class="label">Members</span>
+                
+                <!-- Stats -->
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="memberCount">0</span>
+                        <span class="stat-label">Active Members</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="orgCount">0</span>
+                        <span class="stat-label">Organizations</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="onlineCount">0</span>
+                        <span class="stat-label">Online Now</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="groupCount">0</span>
+                        <span class="stat-label">Groups</span>
+                    </div>
                 </div>
-                <div class="stat">
-                    <span class="number" id="orgCount">0</span>
-                    <span class="label">Organizations</span>
-                </div>
-                <div class="stat">
-                    <span class="number" id="onlineCount">0</span>
-                    <span class="label">Online Now</span>
+                
+                <div class="hero-buttons">
+                    <a href="register.html" class="btn btn-large btn-primary">
+                        <i class="fas fa-id-card"></i> Register & Get ID Card
+                    </a>
+                    <a href="chat.html" class="btn btn-large btn-outline">
+                        <i class="fas fa-comments"></i> Join Chat House
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features -->
+    <!-- Features Grid -->
     <section class="features">
         <div class="container">
-            <h2>What You Get</h2>
+            <h2 class="section-title">What You Get When You Join</h2>
             <div class="features-grid">
-                <div class="feature">
-                    <i class="fas fa-id-card"></i>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
                     <h3>Official ID Card</h3>
-                    <p>Every member gets a unique ID card with QR code</p>
+                    <p>Every member receives a unique digital ID card with QR code verification</p>
+                    <span class="feature-badge">Unique UID</span>
                 </div>
-                <div class="feature">
-                    <i class="fas fa-certificate"></i>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
                     <h3>Organization Certificate</h3>
-                    <p>Registered organizations receive official certificates</p>
+                    <p>Registered organizations get official coalition certificates</p>
+                    <span class="feature-badge">Official Recognition</span>
                 </div>
-                <div class="feature">
-                    <i class="fas fa-comments"></i>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
                     <h3>Chat House</h3>
-                    <p>Connect with all members in our community chat</p>
+                    <p>Real-time chat with all members across Nigeria</p>
+                    <span class="feature-badge">Live Chat</span>
                 </div>
-                <div class="feature">
-                    <i class="fas fa-users"></i>
-                    <h3>Groups & Organizations</h3>
-                    <p>Create and join groups based on your interests</p>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Groups & Networks</h3>
+                    <p>Create or join groups based on your interests and location</p>
+                    <span class="feature-badge">Community</span>
                 </div>
             </div>
         </div>
@@ -102,29 +152,48 @@
     <!-- How It Works -->
     <section class="how-it-works">
         <div class="container">
-            <h2>How to Join</h2>
-            <div class="steps">
+            <h2 class="section-title">How to Join</h2>
+            <div class="steps-container">
                 <div class="step">
                     <div class="step-number">1</div>
-                    <i class="fab fa-twitter"></i>
+                    <div class="step-icon">
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-tiktok"></i>
+                        <i class="fab fa-instagram"></i>
+                    </div>
                     <h3>Follow Us</h3>
-                    <p>Follow on X, TikTok, Facebook, Instagram</p>
+                    <p>Follow on X, TikTok, Facebook & Instagram</p>
+                </div>
+                <div class="step-arrow">
+                    <i class="fas fa-arrow-right"></i>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
-                    <i class="fas fa-user-plus"></i>
+                    <div class="step-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
                     <h3>Register</h3>
                     <p>Sign up as individual or organization</p>
                 </div>
+                <div class="step-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <i class="fas fa-id-card"></i>
+                    <div class="step-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
                     <h3>Get ID/Certificate</h3>
-                    <p>Receive your official ID or certificate</p>
+                    <p>Receive your unique UID and official ID</p>
+                </div>
+                <div class="step-arrow">
+                    <i class="fas fa-arrow-right"></i>
                 </div>
                 <div class="step">
                     <div class="step-number">4</div>
-                    <i class="fas fa-comments"></i>
+                    <div class="step-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
                     <h3>Join Chat</h3>
                     <p>Connect with other members</p>
                 </div>
@@ -132,28 +201,114 @@
         </div>
     </section>
 
+    <!-- Recent Activities -->
+    <section class="recent-activities">
+        <div class="container">
+            <h2 class="section-title">Recent Activities</h2>
+            <div class="activities-list" id="recentActivities">
+                <div class="activity-item">
+                    <i class="fas fa-user-plus"></i>
+                    <div>
+                        <strong>John Okonkwo</strong> joined as individual member
+                        <span class="time">2 mins ago</span>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <i class="fas fa-building"></i>
+                    <div>
+                        <strong>Civil Rights Initiative</strong> registered as organization
+                        <span class="time">1 hour ago</span>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <i class="fas fa-comment"></i>
+                    <div>
+                        <strong>Coalition Chat</strong> 15 new messages in General Chat
+                        <span class="time">3 hours ago</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="social-links">
-                <a href="https://twitter.com/CoalitionMain" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="https://tiktok.com/@coalition" target="_blank"><i class="fab fa-tiktok"></i></a>
-                <a href="https://facebook.com/coalition" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="https://instagram.com/coalition" target="_blank"><i class="fab fa-instagram"></i></a>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-handshake"></i> Coalition for Democracy</h4>
+                    <p>United for democratic pluralism in Nigeria</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://twitter.com/CoalitionMain" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://tiktok.com/@coalition" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://facebook.com/coalition" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://instagram.com/coalition" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="register.html">Join Us</a>
+                    <a href="chat.html">Chat House</a>
+                    <a href="groups.html">Groups</a>
+                </div>
             </div>
-            <p>© 2024 Coalition for Democracy - United Against One-Party System</p>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Coalition for Democracy. All rights reserved. #OneNigeria #Democracy</p>
+            </div>
         </div>
     </footer>
 
     <script type="module">
-        import { getStats } from './js/dashboard.js';
+        import { getStats, getRecentActivities } from './js/dashboard.js';
+        
+        // Load stats
         getStats();
         
-        // Update online count periodically
+        // Load recent activities
+        getRecentActivities();
+        
+        // Update online count
         setInterval(() => {
             import('./js/chat.js').then(module => {
                 module.updateOnlineCount();
             });
-        }, 5000);
+        }, 10000);
+        
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+        
+        // Track follow clicks
+        document.querySelectorAll('.follow-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const platform = this.getAttribute('data-platform');
+                localStorage.setItem(`followed_${platform}`, 'true');
+                
+                // Check if all followed
+                const platforms = ['twitter', 'tiktok', 'facebook', 'instagram'];
+                const allFollowed = platforms.every(p => localStorage.getItem(`followed_${p}`) === 'true');
+                
+                if (allFollowed) {
+                    const statusDiv = document.getElementById('followStatus');
+                    statusDiv.innerHTML = `
+                        <div class="status-message success">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Great! You've followed all platforms. Now register to get your ID!</span>
+                            <a href="register.html" class="btn btn-small">Register Now</a>
+                        </div>
+                    `;
+                }
+            });
+        });
     </script>
 </body>
 </html>
