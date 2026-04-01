@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My ID Card - Coalition Member</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <i class="fas fa-handshake"></i>
+                    <span>Coalition for Democracy</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html" class="btn btn-outline">Dashboard</a>
+                <a href="chat.html" class="btn btn-primary">Chat House</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="id-card-section">
+        <div class="container">
+            <div class="id-card-wrapper">
+                <div class="id-card" id="idCard">
+                    <div class="id-card-front">
+                        <div class="card-header">
+                            <div class="header-left">
+                                <img src="assets/images/logo.png" alt="Logo" class="card-logo">
+                            </div>
+                            <div class="header-center">
+                                <h2>Coalition for Democracy</h2>
+                                <p>Official Membership ID Card</p>
+                            </div>
+                            <div class="header-right">
+                                <div class="id-badge">MEMBER</div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-body">
+                            <div class="card-photo" id="photoContainer">
+                                <i class="fas fa-user-circle fa-5x"></i>
+                            </div>
+                            
+                            <div class="card-info">
+                                <div class="info-group">
+                                    <label>Full Name</label>
+                                    <div class="value" id="cardName">Loading...</div>
+                                </div>
+                                <div class="info-group">
+                                    <label>Member ID</label>
+                                    <div class="value uid-value" id="cardUID">Loading...</div>
+                                </div>
+                                <div class="info-row">
+                                    <div class="info-group">
+                                        <label>Member Since</label>
+                                        <div class="value" id="cardDate">Loading...</div>
+                                    </div>
+                                    <div class="info-group">
+                                        <label>State</label>
+                                        <div class="value" id="cardState">Loading...</div>
+                                    </div>
+                                </div>
+                                <div class="info-group">
+                                    <label>Phone</label>
+                                    <div class="value" id="cardPhone">Loading...</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-footer">
+                            <div class="qr-code" id="qrCode">
+                                <div class="qr-placeholder">QR Code</div>
+                            </div>
+                            <div class="signature-area">
+                                <div class="signature-line"></div>
+                                <p>Authorized Signature</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="id-card-back">
+                        <div class="back-header">
+                            <h3>Member Benefits & Information</h3>
+                        </div>
+                        <div class="back-content">
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Access to Coalition Chat House</li>
+                                <li><i class="fas fa-check-circle"></i> Participate in joint statements</li>
+                                <li><i class="fas fa-check-circle"></i> Attend coalition meetings and events</li>
+                                <li><i class="fas fa-check-circle"></i> Vote on coalition matters</li>
+                                <li><i class="fas fa-check-circle"></i> Network with other members</li>
+                                <li><i class="fas fa-check-circle"></i> Receive coalition updates</li>
+                            </ul>
+                        </div>
+                        <div class="back-footer">
+                            <div class="contact-info">
+                                <p><i class="fas fa-envelope"></i> support@coalition.org</p>
+                                <p><i class="fab fa-twitter"></i> @CoalitionMain</p>
+                                <p><i class="fas fa-globe"></i> www.coalition.org</p>
+                            </div>
+                            <div class="validity">
+                                <p>Valid until: <strong>Lifetime Membership</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-actions">
+                    <button onclick="downloadCard()" class="btn btn-primary">
+                        <i class="fas fa-download"></i> Download ID Card
+                    </button>
+                    <button onclick="printCard()" class="btn btn-outline">
+                        <i class="fas fa-print"></i> Print ID Card
+                    </button>
+                    <button onclick="shareCard()" class="btn btn-outline">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <a href="chat.html" class="btn btn-success">
+                        <i class="fas fa-comments"></i> Join Chat House
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Present this ID to access coalition events and benefits</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script type="module">
+        import { getCurrentUser } from './js/register.js';
+        
+        function loadIDCard() {
+            const user = getCurrentUser();
+            
+            if (!user || user.type !== 'individual') {
+                // Check localStorage for ID data
+                const storedData = localStorage.getItem('coalition_id_data');
+                if (storedData) {
+                    const userData = JSON.parse(storedData);
+                    displayIDCard(userData);
+                    return;
+                }
+                alert('Please register as an individual first');
+                window.location.href = 'register-individual.html';
+                return;
+            }
+            
+            displayIDCard(user);
+        }
+        
+        function displayIDCard(user) {
+            document.getElementById('cardName').textContent = user.fullName || 'Member';
+            document.getElementById('cardUID').textContent = user.uid;
+            document.getElementById('cardState').textContent = user.stateOfOrigin || user.state || 'Nigeria';
+            document.getElementById('cardDate').textContent = new Date(user.registeredAt).toLocaleDateString('en-NG');
+            document.getElementById('cardPhone').textContent = user.phone || 'Not provided';
+            
+            // Generate simple QR code text
+            const qrContainer = document.getElementById('qrCode');
+            qrContainer.innerHTML = `
+                <div class="qr-simple">
+                    <i class="fas fa-qrcode fa-2x"></i>
+                    <span class="qr-text">${user.uid}</span>
+                </div>
+            `;
+            
+            // Add photo if exists
+            if (user.photoUrl) {
+                const photoContainer = document.getElementById('photoContainer');
+                photoContainer.innerHTML = `<img src="${user.photoUrl}" class="card-photo-img" alt="Photo">`;
+            }
+        }
+        
+        window.downloadCard = () => {
+            const card = document.getElementById('idCard');
+            html2canvas(card, {
+                scale: 2,
+                backgroundColor: '#ffffff',
+                logging: false
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = `coalition-id-${document.getElementById('cardUID').textContent}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            }).catch(err => {
+                console.error('Error generating card:', err);
+                alert('Error downloading card. Please try again.');
+            });
+        };
+        
+        window.printCard = () => {
+            window.print();
+        };
+        
+        window.shareCard = () => {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'My Coalition ID Card',
+                    text: `Coalition Member ID: ${document.getElementById('cardUID').textContent}`,
+                    url: window.location.href
+                });
+            } else {
+                alert('Share feature not supported on this browser');
+            }
+        };
+        
+        loadIDCard();
+    </script>
+</body>
+</html>
