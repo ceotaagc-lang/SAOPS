@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Individual Registration - Get Your ID Card</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <i class="fas fa-handshake"></i>
+                    <span>Coalition for Democracy</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="register-form">
+        <div class="container">
+            <div class="form-card">
+                <div class="form-header">
+                    <h1>Individual Registration</h1>
+                    <p>Fill in your details to get your official Coalition ID Card</p>
+                    <div class="progress-indicator">
+                        <div class="progress-step active">Personal Info</div>
+                        <div class="progress-step">Contact Info</div>
+                        <div class="progress-step">Verification</div>
+                    </div>
+                </div>
+                
+                <form id="individualForm">
+                    <!-- Personal Information -->
+                    <div class="form-section active" id="section1">
+                        <h3><i class="fas fa-user"></i> Personal Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Full Name *</label>
+                                <input type="text" id="fullName" required placeholder="Enter your full name">
+                                <small>As it will appear on your ID card</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Date of Birth</label>
+                                <input type="date" id="dob">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <select id="gender">
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Prefer not to say</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>State of Origin</label>
+                                <select id="stateOfOrigin">
+                                    <option value="">Select state</option>
+                                    <option>Abia</option><option>Adamawa</option><option>Akwa Ibom</option>
+                                    <option>Anambra</option><option>Bauchi</option><option>Bayelsa</option>
+                                    <option>Benue</option><option>Borno</option><option>Cross River</option>
+                                    <option>Delta</option><option>Ebonyi</option><option>Edo</option>
+                                    <option>Ekiti</option><option>Enugu</option><option>FCT Abuja</option>
+                                    <option>Gombe</option><option>Imo</option><option>Jigawa</option>
+                                    <option>Kaduna</option><option>Kano</option><option>Katsina</option>
+                                    <option>Kebbi</option><option>Kogi</option><option>Kwara</option>
+                                    <option>Lagos</option><option>Nasarawa</option><option>Niger</option>
+                                    <option>Ogun</option><option>Ondo</option><option>Osun</option>
+                                    <option>Oyo</option><option>Plateau</option><option>Rivers</option>
+                                    <option>Sokoto</option><option>Taraba</option><option>Yobe</option>
+                                    <option>Zamfara</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Address</label>
+                            <textarea id="address" rows="2" placeholder="Your residential address"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Profile Photo</label>
+                            <div class="photo-upload">
+                                <input type="file" id="profilePhoto" accept="image/*" style="display: none;">
+                                <button type="button" class="btn-outline" onclick="document.getElementById('profilePhoto').click()">
+                                    <i class="fas fa-camera"></i> Upload Photo
+                                </button>
+                                <div id="photoPreview" class="photo-preview"></div>
+                                <small>Upload a passport photo for your ID card (JPG/PNG)</small>
+                            </div>
+                        </div>
+                        
+                        <button type="button" class="btn-next" onclick="nextSection(2)">Next <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                    
+                    <!-- Contact Information -->
+                    <div class="form-section" id="section2">
+                        <h3><i class="fas fa-envelope"></i> Contact Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Email Address *</label>
+                                <input type="email" id="email" required placeholder="you@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Phone Number *</label>
+                                <input type="tel" id="phone" required placeholder="0803 123 4567">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Alternate Phone</label>
+                            <input type="tel" id="altPhone" placeholder="Optional">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Occupation/Profession</label>
+                            <input type="text" id="occupation" placeholder="e.g., Teacher, Student, Business">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>X (Twitter) Handle</label>
+                            <input type="text" id="xHandle" placeholder="@yourusername">
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <button type="button" class="btn-prev" onclick="prevSection(1)"><i class="fas fa-arrow-left"></i> Back</button>
+                            <button type="button" class="btn-next" onclick="nextSection(3)">Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    
+                    <!-- Verification & Agreement -->
+                    <div class="form-section" id="section3">
+                        <h3><i class="fas fa-check-circle"></i> Verification & Agreement</h3>
+                        
+                        <div class="verification-box">
+                            <p><i class="fas fa-info-circle"></i> Please confirm you have followed the coalition on social media:</p>
+                            <div class="verify-items">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="followX"> I follow @CoalitionMain on X (Twitter)
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="followTikTok"> I follow @coalition on TikTok
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="followFB"> I follow Coalition on Facebook
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="followIG"> I follow @coalition on Instagram
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="verification-box">
+                            <p><i class="fas fa-file-alt"></i> Terms & Agreements:</p>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="agreeCharter"> I support democratic pluralism and oppose one-party system
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="agreeTerms"> I agree to abide by the coalition's code of conduct
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="agreePrivacy"> I understand how my data will be used
+                            </label>
+                        </div>
+                        
+                        <div class="verification-box">
+                            <label>Why do you want to join the coalition?</label>
+                            <textarea id="reason" rows="3" placeholder="Share your motivation..."></textarea>
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <button type="button" class="btn-prev" onclick="prevSection(2)"><i class="fas fa-arrow-left"></i> Back</button>
+                            <button type="submit" class="btn-submit">Register & Get ID Card <i class="fas fa-id-card"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <div id="successMessage" style="display: none;" class="success-card">
+                <div class="success-animation">
+                    <i class="fas fa-check-circle fa-4x"></i>
+                </div>
+                <h2>Registration Successful!</h2>
+                <p>Your Coalition ID Card has been generated.</p>
+                <div class="uid-display">
+                    <strong>Your Unique ID:</strong>
+                    <div class="uid-box" id="uidDisplay"></div>
+                    <button onclick="copyUID()" class="btn-small"><i class="fas fa-copy"></i> Copy UID</button>
+                </div>
+                <div class="success-buttons">
+                    <a href="my-id-card.html" class="btn btn-primary">View My ID Card</a>
+                    <a href="chat.html" class="btn btn-outline">Join Chat House</a>
+                    <a href="dashboard.html" class="btn btn-outline">Go to Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Your ID card will be available immediately after registration</p>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { registerIndividual, generateUID } from './js/register.js';
+        
+        let currentUID = '';
+        
+        // Photo preview
+        document.getElementById('profilePhoto').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const preview = document.getElementById('photoPreview');
+                    preview.innerHTML = `<img src="${event.target.result}" alt="Preview">`;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        window.nextSection = (section) => {
+            document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
+            document.getElementById(`section${section}`).classList.add('active');
+            
+            document.querySelectorAll('.progress-step').forEach((step, index) => {
+                if (index + 1 <= section) {
+                    step.classList.add('active');
+                } else {
+                    step.classList.remove('active');
+                }
+            });
+        };
+        
+        window.prevSection = (section) => {
+            document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
+            document.getElementById(`section${section}`).classList.add('active');
+        };
+        
+        document.getElementById('individualForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Validate follow requirements
+            const followX = document.getElementById('followX').checked;
+            const followTikTok = document.getElementById('followTikTok').checked;
+            const followFB = document.getElementById('followFB').checked;
+            const followIG = document.getElementById('followIG').checked;
+            
+            if (!followX || !followTikTok || !followFB || !followIG) {
+                alert('Please confirm you have followed the coalition on all social media platforms');
+                return;
+            }
+            
+            if (!document.getElementById('agreeCharter').checked) {
+                alert('Please agree to the coalition charter');
+                return;
+            }
+            
+            const submitBtn = document.querySelector('.btn-submit');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Registering...';
+            
+            // Handle photo
+            let photoUrl = '';
+            const photoFile = document.getElementById('profilePhoto').files[0];
+            if (photoFile) {
+                photoUrl = URL.createObjectURL(photoFile);
+            }
+            
+            const uid = generateUID('IND');
+            currentUID = uid;
+            
+            const userData = {
+                type: 'individual',
+                uid: uid,
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                altPhone: document.getElementById('altPhone').value,
+                dob: document.getElementById('dob').value,
+                gender: document.getElementById('gender').value,
+                stateOfOrigin: document.getElementById('stateOfOrigin').value,
+                address: document.getElementById('address').value,
+                occupation: document.getElementById('occupation').value,
+                xHandle: document.getElementById('xHandle').value,
+                reason: document.getElementById('reason').value,
+                photoUrl: photoUrl,
+                registeredAt: new Date().toISOString(),
+                status: 'active',
+                points: 0,
+                tier: 'member'
+            };
+            
+            const result = await registerIndividual(userData);
+            
+            if (result.success) {
+                document.querySelector('.form-card').style.display = 'none';
+                document.getElementById('uidDisplay').innerHTML = uid;
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // Store for ID card
+                localStorage.setItem('coalition_id_data', JSON.stringify(userData));
+            } else {
+                alert('Error: ' + result.error);
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Register & Get ID Card <i class="fas fa-id-card"></i>';
+            }
+        });
+        
+        window.copyUID = () => {
+            navigator.clipboard.writeText(currentUID);
+            alert('UID copied: ' + currentUID);
+        };
+    </script>
+</body>
+</html>
