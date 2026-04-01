@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization Certificate - Coalition Member</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <i class="fas fa-handshake"></i>
+                    <span>Coalition for Democracy</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html" class="btn btn-outline">Dashboard</a>
+                <a href="groups.html" class="btn btn-outline">Groups</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="certificate-section">
+        <div class="container">
+            <div class="certificate" id="certificate">
+                <div class="certificate-border">
+                    <div class="certificate-inner">
+                        <div class="certificate-header">
+                            <img src="assets/images/logo.png" alt="Logo" class="cert-logo">
+                            <h1>Coalition for Democracy</h1>
+                            <h2>Certificate of Membership</h2>
+                            <p>This certificate is proudly presented to</p>
+                        </div>
+                        
+                        <div class="certificate-body">
+                            <div class="org-name" id="orgName">Organization Name</div>
+                            <div class="org-id" id="orgUID">ORG-XXXXXXXXXX</div>
+                            <div class="org-description" id="orgDesc">
+                                In recognition of their commitment to democratic pluralism
+                                and their dedication to the principles of the coalition.
+                            </div>
+                            
+                            <div class="certificate-details">
+                                <div class="detail">
+                                    <span class="detail-label">Registration Number:</span>
+                                    <span id="cacNumber">Not provided</span>
+                                </div>
+                                <div class="detail">
+                                    <span class="detail-label">Organization Type:</span>
+                                    <span id="orgType">Civil Society Organization</span>
+                                </div>
+                                <div class="detail">
+                                    <span class="detail-label">Date Registered:</span>
+                                    <span id="regDate">Loading...</span>
+                                </div>
+                                <div class="detail">
+                                    <span class="detail-label">Valid Until:</span>
+                                    <span>Lifetime Membership</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="certificate-footer">
+                            <div class="signatures">
+                                <div class="signature">
+                                    <div class="signature-line"></div>
+                                    <p>National Coordinator</p>
+                                </div>
+                                <div class="signature">
+                                    <div class="signature-line"></div>
+                                    <p>Secretary General</p>
+                                </div>
+                            </div>
+                            <div class="seal">
+                                <i class="fas fa-stamp"></i>
+                                <span>OFFICIAL SEAL</span>
+                            </div>
+                        </div>
+                        
+                        <div class="certificate-number">
+                            Certificate No: <span id="certNumber">CDP-2024-001</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="certificate-actions">
+                <button onclick="downloadCertificate()" class="btn btn-primary">
+                    <i class="fas fa-download"></i> Download Certificate
+                </button>
+                <button onclick="printCertificate()" class="btn btn-outline">
+                    <i class="fas fa-print"></i> Print Certificate
+                </button>
+                <a href="groups.html" class="btn btn-success">
+                    <i class="fas fa-users"></i> Create Organization Group
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>This certificate verifies your organization's membership in the coalition</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script type="module">
+        import { getCurrentUser } from './js/register.js';
+        
+        function loadCertificate() {
+            const user = getCurrentUser();
+            
+            if (!user || user.type !== 'organization') {
+                alert('Please register as an organization first');
+                window.location.href = 'register-organization.html';
+                return;
+            }
+            
+            document.getElementById('orgName').textContent = user.orgName;
+            document.getElementById('orgUID').textContent = user.uid;
+            document.getElementById('orgType').textContent = user.orgType || 'Civil Society Organization';
+            document.getElementById('cacNumber').textContent = user.cacNumber || 'Not provided';
+            document.getElementById('regDate').textContent = new Date(user.registeredAt).toLocaleDateString('en-NG');
+            
+            // Generate certificate number
+            const certNumber = `CDP-${new Date().getFullYear()}-${user.uid.slice(-6)}`;
+            document.getElementById('certNumber').textContent = certNumber;
+            
+            if (user.mission) {
+                document.getElementById('orgDesc').innerHTML = user.mission;
+            }
+        }
+        
+        window.downloadCertificate = () => {
+            const cert = document.getElementById('certificate');
+            html2canvas(cert, {
+                scale: 2,
+                backgroundColor: '#ffffff',
+                logging: false
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = `coalition-certificate-${document.getElementById('orgUID').textContent}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            }).catch(err => {
+                console.error('Error generating certificate:', err);
+                alert('Error downloading certificate. Please try again.');
+            });
+        };
+        
+        window.printCertificate = () => {
+            window.print();
+        };
+        
+        loadCertificate();
+    </script>
+</body>
+</html>
