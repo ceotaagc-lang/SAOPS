@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join the Coalition | Application Form</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <img src="assets/images/logo.png" alt="Coalition Logo" class="logo">
+                    <span class="brand-name">Coalition for Democratic Pluralism</span>
+                </a>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-menu" id="navMenu">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="directory.html">Directory</a></li>
+                    <li><a href="charter.html">Charter</a></li>
+                    <li><a href="join.html" class="btn-nav-join">Join Coalition</a></li>
+                </ul>
+                <div class="nav-auth" id="navAuth"></div>
+            </div>
+        </div>
+    </nav>
+    
+    <section class="join-hero">
+        <div class="container">
+            <h1>Join the Coalition</h1>
+            <p>Add your organization's voice to the movement for democratic pluralism in Nigeria</p>
+        </div>
+    </section>
+    
+    <section class="join-form-section">
+        <div class="container">
+            <div class="form-container">
+                <div class="form-progress">
+                    <div class="progress-step active" data-step="1">
+                        <span class="step-number">1</span>
+                        <span class="step-label">Organization Info</span>
+                    </div>
+                    <div class="progress-step" data-step="2">
+                        <span class="step-number">2</span>
+                        <span class="step-label">Leadership</span>
+                    </div>
+                    <div class="progress-step" data-step="3">
+                        <span class="step-number">3</span>
+                        <span class="step-label">Social Media</span>
+                    </div>
+                    <div class="progress-step" data-step="4">
+                        <span class="step-number">4</span>
+                        <span class="step-label">Agreements</span>
+                    </div>
+                </div>
+                
+                <form id="joinForm" enctype="multipart/form-data">
+                    <!-- Step 1: Organization Information -->
+                    <div class="form-step active" data-step="1">
+                        <h3>Organization Information</h3>
+                        
+                        <div class="form-group">
+                            <label for="orgName">Organization Name *</label>
+                            <input type="text" id="orgName" name="orgName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="shortName">Acronym/Short Name</label>
+                            <input type="text" id="shortName" name="shortName" placeholder="e.g., CDP">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cacNumber">CAC Registration Number</label>
+                            <input type="text" id="cacNumber" name="cacNumber">
+                            <small>If registered, upload certificate below</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cacFile">CAC Certificate (PDF/Image)</label>
+                            <input type="file" id="cacFile" name="cacFile" accept=".pdf,.jpg,.jpeg,.png">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="yearEstablished">Year Established</label>
+                            <input type="number" id="yearEstablished" name="yearEstablished" min="1900" max="2024">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="officialEmail">Official Email *</label>
+                            <input type="email" id="officialEmail" name="officialEmail" required>
+                            <small>Use organization domain if possible (e.g., info@yourorg.org)</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="website">Website</label>
+                            <input type="url" id="website" name="website" placeholder="https://">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>States of Operation *</label>
+                            <div class="states-grid" id="statesGrid">
+                                <!-- States checkboxes will be generated via JS -->
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="primaryFocus">Primary Focus Area *</label>
+                            <select id="primaryFocus" name="primaryFocus" required>
+                                <option value="">Select focus area</option>
+                                <option value="democracy_advocacy">Democracy Advocacy</option>
+                                <option value="human_rights">Human Rights</option>
+                                <option value="legal">Legal/Litigation</option>
+                                <option value="media">Media/Press</option>
+                                <option value="youth_mobilization">Youth Mobilization</option>
+                                <option value="womens_rights">Women's Rights</option>
+                                <option value="labor">Labor/Workers' Rights</option>
+                                <option value="religious">Religious/Interfaith</option>
+                                <option value="academic">Academic/Research</option>
+                                <option value="community_development">Community Development</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Estimated Member/Supporter Count *</label>
+                            <select id="memberCount" name="memberCount" required>
+                                <option value="">Select range</option>
+                                <option value="1-50">1-50 members</option>
+                                <option value="51-200">51-200 members</option>
+                                <option value="201-1000">201-1000 members</option>
+                                <option value="1000+">1000+ members</option>
+                            </select>
+                        </div>
+                        
+                        <button type="button" class="btn-next" data-next="2">Next <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                    
+                    <!-- Step 2: Leadership Information -->
+                    <div class="form-step" data-step="2">
+                        <h3>Leadership Information</h3>
+                        
+                        <h4>Organization Leader</h4>
+                        <div class="form-group">
+                            <label for="leaderName">Leader Name *</label>
+                            <input type="text" id="leaderName" name="leaderName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="leaderTitle">Leader Title *</label>
+                            <input type="text" id="leaderTitle" name="leaderTitle" required placeholder="e.g., Executive Director">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="leaderEmail">Leader Email *</label>
+                            <input type="email" id="leaderEmail" name="leaderEmail" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="leaderPhone">Leader Phone *</label>
+                            <input type="tel" id="leaderPhone" name="leaderPhone" required>
+                        </div>
+                        
+                        <h4>Coalition Liaison (Primary Contact)</h4>
+                        <div class="form-group">
+                            <label for="liaisonName">Liaison Name *</label>
+                            <input type="text" id="liaisonName" name="liaisonName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="liaisonTitle">Liaison Title *</label>
+                            <input type="text" id="liaisonTitle" name="liaisonTitle" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="liaisonEmail">Liaison Email *</label>
+                            <input type="email" id="liaisonEmail" name="liaisonEmail" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="liaisonPhone">Liaison Phone *</label>
+                            <input type="tel" id="liaisonPhone" name="liaisonPhone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="liaisonTelegram">Telegram Handle</label>
+                            <input type="text" id="liaisonTelegram" name="liaisonTelegram" placeholder="@username">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="liaisonSignal">Signal Handle</label>
+                            <input type="text" id="liaisonSignal" name="liaisonSignal" placeholder="username.01">
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <button type="button" class="btn-prev" data-prev="1"><i class="fas fa-arrow-left"></i> Previous</button>
+                            <button type="button" class="btn-next" data-next="3">Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 3: Social Media & Verification -->
+                    <div class="form-step" data-step="3">
+                        <h3>Social Media & Verification</h3>
+                        
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle"></i>
+                            <strong>Important:</strong> To verify your organization, we require you to follow our official accounts. This helps us coordinate actions and ensures you receive real-time updates.
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="xHandle">X (Twitter) Handle *</label>
+                            <input type="text" id="xHandle" name="xHandle" required placeholder="@yourorganization">
+                            <small>We will verify that you follow @CoalitionMain and @CoalitionAlert</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="instagram">Instagram Handle</label>
+                            <input type="text" id="instagram" name="instagram" placeholder="@yourorg">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="facebook">Facebook Page</label>
+                            <input type="url" id="facebook" name="facebook" placeholder="https://facebook.com/yourorg">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="linkedin">LinkedIn Page</label>
+                            <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/company/yourorg">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="followMain" required>
+                                I confirm that I have followed <strong>@CoalitionMain</strong> on X
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="followAlert" required>
+                                I confirm that I have followed <strong>@CoalitionAlert</strong> on X
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="telegramChannel">Telegram Channel (Optional)</label>
+                            <input type="text" id="telegramChannel" name="telegramChannel" placeholder="https://t.me/yourchannel">
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <button type="button" class="btn-prev" data-prev="2"><i class="fas fa-arrow-left"></i> Previous</button>
+                            <button type="button" class="btn-next" data-next="4">Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 4: Agreements & Commitments -->
+                    <div class="form-step" data-step="4">
+                        <h3>Agreements & Commitments</h3>
+                        
+                        <div class="agreement-card">
+                            <h4>Coalition Charter</h4>
+                            <p>I have read and understood the <a href="charter.html" target="_blank">Coalition Charter</a> and agree to uphold its principles of democratic pluralism, non-violence, and institutional independence.</p>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="charterAccepted" required>
+                                I accept the Coalition Charter
+                            </label>
+                        </div>
+                        
+                        <div class="agreement-card">
+                            <h4>Non-Partisan Declaration</h4>
+                            <p>I declare that my organization is not a front for any political party and will not use coalition resources for partisan political campaigns.</p>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="nonPartisanAccepted" required>
+                                I affirm this declaration
+                            </label>
+                        </div>
+                        
+                        <div class="agreement-card">
+                            <h4>Confidentiality Agreement</h4>
+                            <p>I agree to maintain confidentiality of coalition internal communications, strategy discussions, and member contact information.</p>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="confidentialityAccepted" required>
+                                I agree to maintain confidentiality
+                            </label>
+                        </div>
+                        
+                        <div class="agreement-card">
+                            <h4>Secure Communication</h4>
+                            <p>I agree to use encrypted communication channels (Telegram or Signal) for sensitive coalition matters.</p>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="secureCommsAccepted" required>
+                                I agree to use secure communication
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>How will your organization contribute? (Select at least one) *</label>
+                            <div class="contributions-grid">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="contribution" value="meeting_attendance">
+                                    Attend coalition meetings
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="contribution" value="content_creation">
+                                    Contribute articles/policy briefs
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="contribution" value="mobilization">
+                                    Mobilize members for actions
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="contribution" value="legal_support">
+                                    Provide legal/technical expertise
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="contribution" value="resource_sharing">
+                                    Share resources within network
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="contribution" value="other">
+                                    Other (specify below)
+                                </label>
+                            </div>
+                            <input type="text" id="otherContribution" placeholder="Please specify other contribution" style="margin-top: 10px; display: none;">
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <button type="button" class="btn-prev" data-prev="3"><i class="fas fa-arrow-left"></i> Previous</button>
+                            <button type="submit" class="btn-submit">Submit Application <i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </form>
+                
+                <div id="formSuccess" class="form-success" style="display: none;">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Application Submitted Successfully!</h3>
+                    <p>Thank you for joining the coalition. Our team will review your application within 3-5 business days.</p>
+                    <p>You will receive a confirmation email at <span id="successEmail"></span> with next steps.</p>
+                    <a href="index.html" class="btn btn-primary">Return to Home</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h4>Coalition for Democratic Pluralism</h4>
+                    <p>United Nigerian civil society organizations working to defend and strengthen multi-party democracy.</p>
+                    <div class="social-links">
+                        <a href="https://twitter.com/CoalitionMain" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://t.me/coalitionplatform" target="_blank"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="charter.html">Coalition Charter</a></li>
+                        <li><a href="join.html">Join Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Coalition for Democratic Pluralism. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/join.js"></script>
+</body>
+</html>
