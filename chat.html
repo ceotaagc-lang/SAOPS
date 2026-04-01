@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat House - Coalition Community</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <i class="fas fa-handshake"></i>
+                    <span>Coalition for Democracy</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html" class="btn btn-outline">Dashboard</a>
+                <a href="groups.html" class="btn btn-outline">Groups</a>
+                <a href="my-id-card.html" class="btn btn-outline">My ID</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="chat-house">
+        <div class="container">
+            <div class="chat-container">
+                <div class="chat-sidebar">
+                    <div class="user-profile">
+                        <img id="userAvatar" src="assets/images/default-avatar.png" alt="Avatar" class="user-avatar">
+                        <div class="user-info">
+                            <h4 id="userName">Loading...</h4>
+                            <p id="userUID" class="user-uid"></p>
+                            <span class="user-badge" id="userBadge"></span>
+                        </div>
+                        <button id="editProfileBtn" class="icon-btn"><i class="fas fa-edit"></i></button>
+                    </div>
+                    
+                    <div class="online-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-circle online-dot"></i> Online Now (<span id="onlineCount">0</span>)</h3>
+                            <button id="refreshOnlineBtn" class="icon-btn"><i class="fas fa-sync-alt"></i></button>
+                        </div>
+                        <div id="onlineList" class="online-list">
+                            <div class="loading-small">Loading...</div>
+                        </div>
+                    </div>
+                    
+                    <div class="rooms-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-hashtag"></i> Chat Rooms</h3>
+                            <button id="createRoomBtn" class="icon-btn"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <div class="room-list" id="roomList">
+                            <div class="room active" data-room="general">
+                                <i class="fas fa-comments"></i>
+                                <span>General Chat</span>
+                                <span class="unread-badge" id="unread-general">0</span>
+                            </div>
+                            <div class="room" data-room="announcements">
+                                <i class="fas fa-bullhorn"></i>
+                                <span>Announcements</span>
+                                <span class="unread-badge" id="unread-announcements">0</span>
+                            </div>
+                            <div class="room" data-room="organizations">
+                                <i class="fas fa-building"></i>
+                                <span>Organizations</span>
+                                <span class="unread-badge" id="unread-organizations">0</span>
+                            </div>
+                            <div class="room" data-room="events">
+                                <i class="fas fa-calendar"></i>
+                                <span>Events</span>
+                                <span class="unread-badge" id="unread-events">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chat-main">
+                    <div class="chat-header">
+                        <div class="room-info">
+                            <i class="fas fa-hashtag"></i>
+                            <h3 id="currentRoom">General Chat</h3>
+                            <span id="roomDesc" class="room-desc">Welcome to the main discussion</span>
+                        </div>
+                        <div class="chat-actions">
+                            <button id="searchBtn" class="icon-btn" title="Search messages">
+                                <i class="fas fa-search"></i>
+                            </button>
+                            <button id="clearChatBtn" class="icon-btn" title="Clear chat">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                            <button id="infoBtn" class="icon-btn" title="Room info">
+                                <i class="fas fa-info-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="welcome-message">
+                            <i class="fas fa-hand-peace"></i>
+                            <p>Welcome to the Coalition Chat House!</p>
+                            <small>Be respectful, support democracy, and connect with fellow members</small>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input-area">
+                        <div class="input-tools">
+                            <button id="emojiBtn" class="icon-btn" title="Add emoji">
+                                <i class="fas fa-smile"></i>
+                            </button>
+                            <button id="attachBtn" class="icon-btn" title="Attach file">
+                                <i class="fas fa-paperclip"></i>
+                            </button>
+                            <button id="gifBtn" class="icon-btn" title="Add GIF">
+                                <i class="fas fa-grin"></i>
+                            </button>
+                        </div>
+                        <div class="input-wrapper">
+                            <textarea id="messageInput" placeholder="Type your message..." rows="2"></textarea>
+                            <button id="sendBtn" class="send-btn">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        <div class="input-hint">
+                            <small>Press Enter to send, Shift+Enter for new line</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="emojiPicker" class="emoji-picker" style="display: none;">
+        <div class="emoji-list">
+            <span>😊</span><span>😂</span><span>❤️</span><span>👍</span><span>🙏</span>
+            <span>🇳🇬</span><span>🎉</span><span>💪</span><span>🤝</span><span>✨</span>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Be part of the conversation. Stand for democracy. #CoalitionChat</p>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { getCurrentUser } from './js/register.js';
+        import { 
+            initChat, 
+            sendMessage, 
+            loadMessages, 
+            updateOnlineUsers,
+            changeRoom 
+        } from './js/chat.js';
+        
+        const user = getCurrentUser();
+        
+        if (!user) {
+            alert('Please register to join the chat');
+            window.location.href = 'register.html';
+        }
+        
+        // Display user info
+        document.getElementById('userName').textContent = user.type === 'individual' ? user.fullName : user.orgName;
+        document.getElementById('userUID').textContent = user.uid;
+        document.getElementById('userBadge').textContent = user.type === 'individual' ? 'Individual Member' : 'Organization';
+        document.getElementById('userBadge').classList.add(user.type === 'individual' ? 'badge-individual' : 'badge-org');
+        
+        // Initialize chat
+        initChat(user);
+        
+        // Send message
+        const messageInput = document.getElementById('messageInput');
+        const sendBtn = document.getElementById('sendBtn');
+        
+        function sendCurrentMessage() {
+            const message = messageInput.value;
+            if (message.trim()) {
+                sendMessage(message, user);
+                messageInput.value = '';
+                messageInput.style.height = 'auto';
+            }
+        }
+        
+        sendBtn.addEventListener('click', sendCurrentMessage);
+        
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendCurrentMessage();
+            }
+        });
+        
+        // Auto-resize textarea
+        messageInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 100) + 'px';
+        });
+        
+        // Room switching
+        document.querySelectorAll('.room').forEach(room => {
+            room.addEventListener('click', () => {
+                document.querySelectorAll('.room').forEach(r => r.classList.remove('active'));
+                room.classList.add('active');
+                const roomName = room.getAttribute('data-room');
+                const roomDisplayName = room.querySelector('span').textContent;
+                document.getElementById('currentRoom').textContent = roomDisplayName;
+                changeRoom(roomName);
+                
+                // Clear unread badge
+                const badge = room.querySelector('.unread-badge');
+                if (badge) badge.textContent = '0';
+            });
+        });
+        
+        // Emoji picker
+        const emojiBtn = document.getElementById('emojiBtn');
+        const emojiPicker = document.getElementById('emojiPicker');
+        
+        emojiBtn.addEventListener('click', () => {
+            const isVisible = emojiPicker.style.display === 'flex';
+            emojiPicker.style.display = isVisible ? 'none' : 'flex';
+        });
+        
+        document.querySelectorAll('.emoji-list span').forEach(emoji => {
+            emoji.addEventListener('click', () => {
+                messageInput.value += emoji.textContent;
+                messageInput.focus();
+                emojiPicker.style.display = 'none';
+            });
+        });
+        
+        // Close emoji picker on click outside
+        document.addEventListener('click', (e) => {
+            if (!emojiPicker.contains(e.target) && e.target !== emojiBtn) {
+                emojiPicker.style.display = 'none';
+            }
+        });
+        
+        // Update online count every 10 seconds
+        setInterval(() => {
+            updateOnlineUsers();
+        }, 10000);
+        
+        // Refresh online list
+        document.getElementById('refreshOnlineBtn').addEventListener('click', () => {
+            updateOnlineUsers();
+        });
+    </script>
+</body>
+</html>
