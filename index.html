@@ -3,182 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coalition for Democratic Pluralism | United Against One-Party System</title>
-    <meta name="description" content="A coalition of Nigerian civil society organizations advocating for democratic pluralism, institutional independence, and multi-party democracy.">
-    
-    <!-- CSS -->
+    <title>Coalition for Democracy | Join the Movement</title>
     <link rel="stylesheet" href="css/style.css">
-    
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="nav">
         <div class="container">
             <div class="nav-brand">
                 <a href="index.html">
-                    <img src="assets/images/logo.png" alt="Coalition Logo" class="logo">
-                    <span class="brand-name">Coalition for Democratic Pluralism</span>
+                    <i class="fas fa-handshake"></i>
+                    <span>Coalition for Democracy</span>
                 </a>
             </div>
-            
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <div class="nav-menu" id="navMenu">
-                <ul class="nav-links">
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="directory.html">Directory</a></li>
-                    <li><a href="charter.html">Charter</a></li>
-                    <li><a href="join.html" class="btn-nav-join">Join Coalition</a></li>
-                </ul>
-                
-                <div class="nav-auth" id="navAuth">
-                    <!-- Auth buttons will be injected here -->
-                </div>
+            <div class="nav-links">
+                <a href="register.html" class="btn btn-primary">Join Now</a>
+                <a href="dashboard.html" class="btn btn-outline">Login</a>
             </div>
         </div>
     </nav>
-    
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <div class="hero-content">
-                <h1>Defending Democracy,<br>One Coalition at a Time</h1>
-                <p class="hero-subtitle">United against authoritarianism. Building a future of pluralism, accountability, and institutional independence for Nigeria.</p>
-                
-                <div class="hero-buttons">
-                    <a href="join.html" class="btn btn-primary btn-large">
-                        <i class="fas fa-handshake"></i> Join the Coalition
+            <h1>Stand Against One-Party System</h1>
+            <p>Join thousands of Nigerians fighting for true democracy. Follow us on social media and be part of the change.</p>
+            
+            <!-- Social Media Follow Buttons -->
+            <div class="social-follow">
+                <h3>Follow Us & Join the Movement</h3>
+                <div class="follow-buttons">
+                    <a href="https://twitter.com/CoalitionMain" target="_blank" class="follow-btn twitter">
+                        <i class="fab fa-twitter"></i>
+                        <span>Follow on X</span>
                     </a>
-                    <a href="directory.html" class="btn btn-outline btn-large">
-                        <i class="fas fa-building"></i> View Members
+                    <a href="https://tiktok.com/@coalition" target="_blank" class="follow-btn tiktok">
+                        <i class="fab fa-tiktok"></i>
+                        <span>Follow on TikTok</span>
+                    </a>
+                    <a href="https://facebook.com/coalition" target="_blank" class="follow-btn facebook">
+                        <i class="fab fa-facebook"></i>
+                        <span>Follow on Facebook</span>
+                    </a>
+                    <a href="https://instagram.com/coalition" target="_blank" class="follow-btn instagram">
+                        <i class="fab fa-instagram"></i>
+                        <span>Follow on Instagram</span>
                     </a>
                 </div>
-                
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-number" id="orgCount">0</span>
-                        <span class="stat-label">Member Organizations</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number" id="stateCount">0</span>
-                        <span class="stat-label">States Covered</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number" id="statementCount">0</span>
-                        <span class="stat-label">Joint Statements</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Core Principles Section -->
-    <section class="principles">
-        <div class="container">
-            <h2 class="section-title">Our Core Principles</h2>
-            <div class="principles-grid">
-                <div class="principle-card">
-                    <i class="fas fa-balance-scale"></i>
-                    <h3>Democratic Pluralism</h3>
-                    <p>Championing a political system where multiple parties and diverse voices compete freely and fairly.</p>
-                </div>
-                <div class="principle-card">
-                    <i class="fas fa-gavel"></i>
-                    <h3>Rule of Law</h3>
-                    <p>Ensuring institutions are independent and accountable, not subservient to any political party.</p>
-                </div>
-                <div class="principle-card">
-                    <i class="fas fa-users"></i>
-                    <h3>Citizen Participation</h3>
-                    <p>Empowering Nigerians to actively shape their governance through informed civic engagement.</p>
-                </div>
-                <div class="principle-card">
-                    <i class="fas fa-hand-peace"></i>
-                    <h3>Non-Violence</h3>
-                    <p>Advocating for change through peaceful, constitutional, and democratic means.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Recent Statements Section -->
-    <section class="statements">
-        <div class="container">
-            <h2 class="section-title">Recent Joint Statements</h2>
-            <div class="statements-list" id="recentStatements">
-                <!-- Statements loaded via JS -->
-                <div class="loading">Loading statements...</div>
-            </div>
-            <div class="text-center">
-                <a href="#" class="btn btn-outline">View All Statements</a>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-about">
-                    <h4>Coalition for Democratic Pluralism</h4>
-                    <p>United Nigerian civil society organizations working to defend and strengthen multi-party democracy.</p>
-                    <div class="social-links">
-                        <a href="https://twitter.com/CoalitionMain" target="_blank"><i class="fab fa-twitter"></i></a>
-                        <a href="https://t.me/coalitionplatform" target="_blank"><i class="fab fa-telegram"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="charter.html">Coalition Charter</a></li>
-                        <li><a href="join.html">Join Us</a></li>
-                        <li><a href="directory.html">Member Directory</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-contact">
-                    <h4>Contact</h4>
-                    <p><i class="fas fa-envelope"></i> info@coalitionplatform.org</p>
-                    <p><i class="fas fa-phone"></i> +234 (0) 123 456 7890</p>
-                    <p><i class="fas fa-map-marker-alt"></i> Abuja, Nigeria</p>
-                </div>
+                <p class="follow-note">After following, register to get your official ID Card!</p>
             </div>
             
-            <div class="footer-bottom">
-                <p>&copy; 2024 Coalition for Democratic Pluralism. All rights reserved.</p>
+            <div class="stats">
+                <div class="stat">
+                    <span class="number" id="memberCount">0</span>
+                    <span class="label">Members</span>
+                </div>
+                <div class="stat">
+                    <span class="number" id="orgCount">0</span>
+                    <span class="label">Organizations</span>
+                </div>
+                <div class="stat">
+                    <span class="number" id="onlineCount">0</span>
+                    <span class="label">Online Now</span>
+                </div>
             </div>
         </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <h2>What You Get</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <i class="fas fa-id-card"></i>
+                    <h3>Official ID Card</h3>
+                    <p>Every member gets a unique ID card with QR code</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-certificate"></i>
+                    <h3>Organization Certificate</h3>
+                    <p>Registered organizations receive official certificates</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-comments"></i>
+                    <h3>Chat House</h3>
+                    <p>Connect with all members in our community chat</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-users"></i>
+                    <h3>Groups & Organizations</h3>
+                    <p>Create and join groups based on your interests</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How to Join</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <i class="fab fa-twitter"></i>
+                    <h3>Follow Us</h3>
+                    <p>Follow on X, TikTok, Facebook, Instagram</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <i class="fas fa-user-plus"></i>
+                    <h3>Register</h3>
+                    <p>Sign up as individual or organization</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <i class="fas fa-id-card"></i>
+                    <h3>Get ID/Certificate</h3>
+                    <p>Receive your official ID or certificate</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <i class="fas fa-comments"></i>
+                    <h3>Join Chat</h3>
+                    <p>Connect with other members</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://twitter.com/CoalitionMain" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://tiktok.com/@coalition" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://facebook.com/coalition" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://instagram.com/coalition" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>© 2024 Coalition for Democracy - United Against One-Party System</p>
+        </div>
     </footer>
-    
-    <!-- Firebase Scripts -->
-    <script type="module" src="js/firebase-config.js"></script>
-    <script type="module" src="js/utils.js"></script>
+
     <script type="module">
-        import { loadHomepageStats, loadRecentStatements } from './js/dashboard.js';
+        import { getStats } from './js/dashboard.js';
+        getStats();
         
-        // Load homepage data
-        loadHomepageStats();
-        loadRecentStatements();
-        
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navMenu = document.getElementById('navMenu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
+        // Update online count periodically
+        setInterval(() => {
+            import('./js/chat.js').then(module => {
+                module.updateOnlineCount();
+            });
+        }, 5000);
     </script>
 </body>
 </html>
