@@ -1,0 +1,17 @@
+{
+  "name": "coalition-platform",
+  "version": "1.0.0",
+  "description": "Coalition for Democratic Pluralism - Platform for organizations united against one-party system",
+  "main": "index.html",
+  "scripts": {
+    "dev": "serve .",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "firebase": "^10.8.0"
+  },
+  "devDependencies": {
+    "serve": "^14.2.0",
+    "vercel": "^32.0.0"
+  }
+}
