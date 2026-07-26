@@ -6,7 +6,11 @@
       "use": "@vercel/static"
     },
     {
-      "src": "/*.txt",
+      "src": "/privacy.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "/terms.html",
       "use": "@vercel/static"
     },
     {
