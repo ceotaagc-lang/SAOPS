@@ -1,74 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pi Test</title>
+    <title>Pi SDK Test</title>
 </head>
 <body>
-    <h1>Pi SDK Test</h1>
-    <p id="status">Checking...</p>
-    <button onclick="test()">Test</button>
+    <h1>Pi Test</h1>
+    <p id="status">Loading Pi SDK...</p>
+    <button onclick="checkPi()">Check Pi</button>
 
     <script>
-        // YOUR CREDENTIALS
         const APP_ID = 'd54r1mfz7thtxwrg7lvtfckdg2kicb0yrctweyqvpnvnfjp6ufuzfwalggphclfw';
         const WALLET_SEED = 'CXLsORDpo8uyNGBio9oSIpSXvFuIOznimsFk4f-hSQY';
 
-        const status = document.getElementById('status');
-
         function log(msg) {
-            status.textContent = msg;
-            console.log(msg);
+            document.getElementById('status').textContent = msg;
         }
 
-        async function test() {
-            log('Testing Pi SDK...');
-
+        function checkPi() {
             if (typeof Pi === 'undefined') {
-                log('❌ Pi SDK not found. Open in Pi Browser.');
+                log('❌ Pi SDK not found. Open in Pi Browser and authorize sandbox.');
                 return;
             }
+            log('✅ Pi SDK found! Initializing...');
 
-            log('✅ Pi SDK found. Initializing...');
+            Pi.init({
+                appId: APP_ID,
+                wallet: WALLET_SEED,
+                network: 'testnet',
+                sandbox: true
+            });
 
-            try {
-                Pi.init({
-                    appId: APP_ID,
-                    wallet: WALLET_SEED,
-                    network: 'testnet',
-                    sandbox: true
-                });
-                log('✅ Init successful. Authenticating...');
-
-                const user = await Pi.authenticate();
-                log('✅ Authenticated! UID: ' + user.uid);
-
-                // Try a payment
-                log('Creating payment...');
-                const payment = await Pi.createPayment({
-                    amount: 0.01,
-                    memo: 'Test',
-                    uid: user.uid
-                });
-                log('✅ Payment created: ' + payment.identifier);
-
-                const submitted = await Pi.submitPayment(payment.identifier);
-                log('✅ Submitted: ' + submitted.txid);
-
-                const completed = await Pi.completePayment(payment.identifier, submitted.txid);
-                log('✅ COMPLETE!');
-
-            } catch (err) {
-                log('❌ Error: ' + err.message);
-            }
+            log('✅ Init done. Try clicking again to authenticate.');
         }
 
         window.onload = function() {
-            if (typeof Pi === 'undefined') {
-                log('⚠️ Open this page in Pi Browser');
+            if (typeof Pi !== 'undefined') {
+                log('✅ Pi SDK loaded! Click "Check Pi" to initialize.');
             } else {
-                log('✅ Pi SDK detected. Click "Test" to start.');
+                log('⚠️ Pi SDK not loaded. Open in Pi Browser.');
             }
         };
     </script>
