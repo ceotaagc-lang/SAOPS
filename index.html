@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TAAGC Testnet Payment</title>
+    <title>TAAGC Pi Payment</title>
     <style>
         * {
             margin: 0;
@@ -22,76 +22,79 @@
         }
 
         .container {
-            max-width: 480px;
+            max-width: 460px;
             width: 100%;
             background: #ffffff;
-            border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(10, 30, 61, 0.15);
+            border-radius: 28px;
+            box-shadow: 0 20px 60px rgba(10, 30, 61, 0.12);
             overflow: hidden;
-            padding: 0;
         }
 
-        /* ===== HERO BANNER ===== */
-        .hero-banner {
-            width: 100%;
-            aspect-ratio: 750 / 1500;
+        /* ===== HERO ===== */
+        .hero {
             background: linear-gradient(135deg, #0A1E3D 0%, #003366 100%);
+            padding: 40px 30px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero .logo {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            position: relative;
-            padding: 30px;
+            margin: 0 auto 14px;
+            padding: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         }
 
-        .hero-banner .brand-text {
-            text-align: center;
-            color: white;
-            z-index: 1;
+        .hero .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
-        .hero-banner .brand-text h1 {
-            font-size: 28px;
+        .hero .logo .placeholder {
+            font-size: 11px;
             font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+            color: #0A1E3D;
+            text-align: center;
+            line-height: 1.2;
+        }
+        .hero .logo .placeholder span {
+            display: block;
+            font-size: 7px;
+            font-weight: 400;
+            color: #00A3A3;
         }
 
-        .hero-banner .brand-text h1 .highlight {
-            color: #F5A623;
+        .hero h1 {
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
-        .hero-banner .brand-text p {
-            font-size: 12px;
-            opacity: 0.8;
-            letter-spacing: 4px;
-            margin-top: 6px;
-            text-transform: uppercase;
-        }
-
-        .hero-banner .brand-text .tagline {
-            font-size: 10px;
-            opacity: 0.6;
-            letter-spacing: 3px;
+        .hero p {
+            color: rgba(255,255,255,0.7);
+            font-size: 13px;
             margin-top: 4px;
         }
 
-        /* Decorative dots */
-        .hero-banner .dot-pattern {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            gap: 6px;
-        }
-        .hero-banner .dot-pattern span {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-        }
-        .hero-banner .dot-pattern span.active {
+        .hero .badge {
+            display: inline-block;
             background: #F5A623;
+            color: #0A1E3D;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 14px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 10px;
         }
 
         /* ===== CONTENT ===== */
@@ -99,129 +102,89 @@
             padding: 28px 24px 32px;
         }
 
-        /* ===== LOGO ===== */
-        .logo-wrapper {
-            display: flex;
-            justify-content: center;
-            margin-top: -56px;
-            margin-bottom: 16px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .logo-circle {
-            width: 88px;
-            height: 88px;
-            border-radius: 50%;
-            background: #ffffff;
-            box-shadow: 0 4px 20px rgba(10, 30, 61, 0.18);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            border: 3px solid #ffffff;
-            padding: 10px;
-        }
-
-        .logo-circle img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .logo-circle .placeholder-logo {
-            font-size: 10px;
-            font-weight: 700;
-            color: #0A1E3D;
-            text-align: center;
-            line-height: 1.3;
-            letter-spacing: 0.5px;
-        }
-        .logo-circle .placeholder-logo span {
-            display: block;
-            font-size: 8px;
-            font-weight: 400;
-            color: #00A3A3;
-        }
-
-        /* ===== BADGE ===== */
-        .badge {
-            display: inline-block;
-            background: #F5A623;
-            color: #0A1E3D;
-            font-weight: 700;
-            font-size: 11px;
-            padding: 4px 16px;
-            border-radius: 20px;
-            margin-bottom: 10px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .title {
-            font-size: 22px;
-            font-weight: 700;
-            color: #0A1E3D;
-            margin-bottom: 2px;
-        }
-
-        .subtitle {
-            color: #64748b;
-            font-size: 14px;
-            margin-bottom: 18px;
-        }
-
         /* ===== STATUS ===== */
         .status {
             background: #e6f7f7;
-            border: 1px solid #00A3A3;
-            border-radius: 12px;
-            padding: 14px 16px;
-            margin: 16px 0;
-            font-size: 14px;
-            color: #0A1E3D;
+            border-radius: 14px;
+            padding: 16px 18px;
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-
-        .status.error {
-            background: #fef2f2;
-            border-color: #fca5a5;
-            color: #991b1b;
+            gap: 12px;
+            margin-bottom: 20px;
+            border-left: 4px solid #00A3A3;
         }
 
         .status .icon {
-            font-size: 20px;
+            font-size: 22px;
+            flex-shrink: 0;
         }
 
-        /* ===== COUNTER ===== */
-        .counter {
-            background: #f0f4f8;
-            border-radius: 12px;
-            padding: 16px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 16px 0 20px;
-        }
-
-        .counter-label {
+        .status .text {
             font-size: 14px;
             color: #0A1E3D;
             font-weight: 500;
         }
 
-        .counter-number {
-            font-size: 28px;
+        .status .text .highlight {
+            color: #00A3A3;
+            font-weight: 700;
+        }
+
+        .status.error {
+            background: #fef2f2;
+            border-left-color: #ef4444;
+        }
+
+        .status.success {
+            background: #f0fdf4;
+            border-left-color: #22c55e;
+        }
+
+        /* ===== PROGRESS ===== */
+        .progress-section {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 18px 20px;
+            margin-bottom: 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .progress-section .label {
+            font-size: 14px;
+            color: #475569;
+            font-weight: 500;
+        }
+
+        .progress-section .count {
+            font-size: 30px;
             font-weight: 800;
             color: #00A3A3;
         }
 
-        .counter-number .total {
+        .progress-section .count .total {
+            font-size: 18px;
             font-weight: 400;
             color: #94a3b8;
-            font-size: 18px;
+        }
+
+        /* ===== PROGRESS BAR ===== */
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            margin-bottom: 22px;
+            overflow: hidden;
+        }
+
+        .progress-bar .fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #00A3A3, #F5A623);
+            border-radius: 10px;
+            transition: width 0.5s ease;
         }
 
         /* ===== BUTTON ===== */
@@ -236,17 +199,16 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.25s;
+            box-shadow: 0 4px 16px rgba(0, 163, 163, 0.30);
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            box-shadow: 0 4px 16px rgba(0, 163, 163, 0.30);
         }
 
         .pay-btn:hover {
             background: #008888;
             transform: scale(1.01);
-            box-shadow: 0 6px 24px rgba(0, 163, 163, 0.40);
         }
 
         .pay-btn:disabled {
@@ -257,53 +219,48 @@
         }
 
         .pay-btn .spinner {
-            display: inline-block;
             width: 20px;
             height: 20px;
             border: 3px solid rgba(255,255,255,0.3);
             border-radius: 50%;
             border-top-color: #fff;
             animation: spin 0.8s linear infinite;
+            display: inline-block;
         }
 
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
 
-        /* ===== LOG ===== */
-        .log {
-            margin-top: 20px;
-            background: #f8fafc;
-            border-radius: 12px;
-            padding: 14px 16px;
+        .pay-btn .check {
+            font-size: 20px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            margin-top: 24px;
             font-size: 12px;
-            font-family: 'Courier New', monospace;
-            color: #0A1E3D;
-            border: 1px solid #e2e8f0;
-            max-height: 160px;
-            overflow-y: auto;
-            white-space: pre-wrap;
-            word-break: break-all;
-            line-height: 1.6;
-        }
-
-        .log-empty {
             color: #94a3b8;
-            font-style: italic;
+            letter-spacing: 0.3px;
         }
 
-        .log .highlight-log {
+        .footer a {
             color: #00A3A3;
-            font-weight: 600;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
         }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 480px) {
             .content { padding: 20px 16px 24px; }
-            .logo-circle { width: 72px; height: 72px; margin-top: -48px; padding: 8px; }
-            .title { font-size: 19px; }
-            .counter-number { font-size: 24px; }
-            .hero-banner .brand-text h1 { font-size: 20px; }
+            .hero { padding: 30px 20px 24px; }
+            .hero h1 { font-size: 17px; }
+            .progress-section .count { font-size: 26px; }
         }
     </style>
 </head>
@@ -311,69 +268,52 @@
 
 <div class="container">
 
-    <!-- ===== HERO BANNER ===== -->
-    <div class="hero-banner">
-        <div class="brand-text">
-            <h1>TRIPLE A <span class="highlight">✦</span> HALAL</h1>
-            <p>Agriculture · Industry · Tech</p>
-            <div class="tagline">✦ Innovate · Empower · Elevate ✦</div>
-        </div>
-        <div class="dot-pattern">
-            <span class="active"></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
-
-    <div class="content">
-
-        <!-- ===== LOGO ===== -->
-        <div class="logo-wrapper">
-            <div class="logo-circle">
-                <!-- REPLACE WITH YOUR 400x400 LOGO -->
-                <img src="/assets/400x400.png" alt="TAAGC Logo" />
-                <!-- FALLBACK if image not found -->
-                <!--
-                <div class="placeholder-logo">
-                    TAAGC
-                    <span>global concept</span>
-                </div>
-                -->
+    <!-- ===== HERO ===== -->
+    <div class="hero">
+        <div class="logo">
+            <!-- REPLACE WITH YOUR LOGO: <img src="/assets/400x400 1.png" alt="TAAGC" /> -->
+            <div class="placeholder">
+                TAAGC
+                <span>global concept</span>
             </div>
         </div>
+        <div class="badge">🧪 Testnet</div>
+        <h1>Payment Verification</h1>
+        <p>Complete 5 test transactions to activate</p>
+    </div>
 
-        <!-- ===== HEADER ===== -->
-        <div style="text-align: center;">
-            <div class="badge">🧪 PI TESTNET</div>
-            <h1 class="title">Payment Verification</h1>
-            <p class="subtitle">Send test Pi to activate your app wallet</p>
-        </div>
+    <!-- ===== CONTENT ===== -->
+    <div class="content">
 
-        <!-- ===== STATUS ===== -->
+        <!-- STATUS -->
         <div class="status" id="status">
             <span class="icon">✅</span>
-            <span>Ready to send test payments</span>
+            <div class="text">Ready to send <span class="highlight">test Pi</span> payments</div>
         </div>
 
-        <!-- ===== COUNTER ===== -->
-        <div class="counter">
-            <span class="counter-label">📊 Progress</span>
-            <span class="counter-number">
+        <!-- PROGRESS -->
+        <div class="progress-section">
+            <span class="label">📊 Progress</span>
+            <span class="count">
                 <span id="count">0</span>
                 <span class="total">/ 5</span>
             </span>
         </div>
 
-        <!-- ===== PAY BUTTON ===== -->
+        <!-- PROGRESS BAR -->
+        <div class="progress-bar">
+            <div class="fill" id="progressFill"></div>
+        </div>
+
+        <!-- BUTTON -->
         <button class="pay-btn" id="payBtn" onclick="sendPayment()">
             💸 Send 0.01 Test Pi
         </button>
 
-        <!-- ===== LOG ===== -->
-        <div class="log" id="log">
-            <span class="log-empty">📋 Ready. Tap the button to start.</span>
+        <!-- FOOTER -->
+        <div class="footer">
+            <a href="https://taagc.site/privacy" target="_blank">Privacy</a> ·
+            <a href="https://taagc.site/terms" target="_blank">Terms</a>
         </div>
 
     </div>
@@ -383,138 +323,113 @@
     // ============================================================
     //  CONFIGURATION – REPLACE WITH YOUR TESTNET CREDENTIALS
     // ============================================================
-    const APP_ID = 'YOUR_APP_ID';           // from pi://develop.pi
-    const WALLET_SEED = 'YOUR_WALLET_SEED'; // starts with "S"
+    const APP_ID = 'YOUR_APP_ID';
+    const WALLET_SEED = 'YOUR_WALLET_SEED';
     // ============================================================
 
-    let completedCount = 0;
+    let completed = 0;
     const TARGET = 5;
-    const logEl = document.getElementById('log');
     const statusEl = document.getElementById('status');
     const countEl = document.getElementById('count');
+    const progressFill = document.getElementById('progressFill');
     const btn = document.getElementById('payBtn');
 
-    // Load progress
-    if (localStorage.getItem('taagc_test_count')) {
-        completedCount = parseInt(localStorage.getItem('taagc_test_count'));
-        updateCounter();
+    // Load saved progress
+    if (localStorage.getItem('taagc_count')) {
+        completed = parseInt(localStorage.getItem('taagc_count'));
+        updateUI();
     }
 
-    function updateCounter() {
-        countEl.textContent = completedCount;
-        localStorage.setItem('taagc_test_count', completedCount);
+    function updateUI() {
+        countEl.textContent = completed;
+        progressFill.style.width = (completed / TARGET * 100) + '%';
+        localStorage.setItem('taagc_count', completed);
 
-        if (completedCount >= TARGET) {
-            statusEl.innerHTML = '<span class="icon">🎉</span><span>All 5 done! Submit your Mainnet app now.</span>';
-            statusEl.className = 'status';
+        if (completed >= TARGET) {
+            statusEl.className = 'status success';
+            statusEl.innerHTML = `
+                <span class="icon">🎉</span>
+                <div class="text">All 5 complete! Your app is ready.</div>
+            `;
             btn.disabled = true;
-            btn.innerHTML = '✅ Ready to Submit Application';
+            btn.innerHTML = '<span class="check">✅</span> Activation Complete';
         }
     }
 
-    function log(msg) {
-        const time = new Date().toLocaleTimeString();
-        const entry = `[${time}] ${msg}`;
-        logEl.innerHTML = entry + '\n' + logEl.innerHTML;
-        if (logEl.querySelector('.log-empty')) {
-            logEl.innerHTML = entry + '\n';
-        }
+    function setStatus(icon, text, type) {
+        statusEl.className = 'status' + (type ? ' ' + type : '');
+        statusEl.innerHTML = `<span class="icon">${icon}</span><div class="text">${text}</div>`;
     }
 
     async function sendPayment() {
-        if (completedCount >= TARGET) {
-            log('✅ Already completed all 5 transactions.');
-            return;
-        }
+        if (completed >= TARGET) return;
 
+        // Check Pi Browser
         if (typeof Pi === 'undefined') {
-            statusEl.className = 'status error';
-            statusEl.innerHTML = '<span class="icon">❌</span><span>Please open this page in the Pi Browser.</span>';
-            log('❌ Pi SDK not found – open in Pi Browser');
+            setStatus('⚠️', 'Please open this page in the Pi Browser', 'error');
             return;
         }
 
+        // Initialize
         try {
-            Pi.init({
-                appId: APP_ID,
-                wallet: WALLET_SEED,
-                network: 'testnet'
-            });
-            log('✅ Pi SDK initialized (Testnet)');
-        } catch (err) {
-            statusEl.className = 'status error';
-            statusEl.innerHTML = `<span class="icon">❌</span><span>Init failed: ${err.message}</span>`;
-            log(`❌ Init error: ${err.message}`);
+            Pi.init({ appId: APP_ID, wallet: WALLET_SEED, network: 'testnet' });
+        } catch (e) {
+            setStatus('❌', 'Connection error. Please try again.', 'error');
             return;
         }
 
+        // Authenticate
         let user;
         try {
             user = await Pi.authenticate();
-            log(`👤 Authenticated: ${user.uid}`);
-        } catch (err) {
-            statusEl.className = 'status error';
-            statusEl.innerHTML = '<span class="icon">🔑</span><span>Please log into Pi Browser first.</span>';
-            log(`❌ Auth error: ${err.message}`);
+        } catch (e) {
+            setStatus('🔑', 'Please log in to your Pi account', 'error');
             return;
         }
 
+        // Process payment
         btn.disabled = true;
         btn.innerHTML = '<span class="spinner"></span> Processing...';
-        statusEl.className = 'status';
-        statusEl.innerHTML = '<span class="icon">⏳</span><span>Creating payment...</span>';
+        setStatus('⏳', 'Sending test payment...');
 
         try {
             const payment = await Pi.createPayment({
                 amount: 0.01,
-                memo: 'TAAGC Testnet verification',
-                metadata: { purpose: 'developer test', app: 'TAAGC' },
+                memo: 'TAAGC verification',
+                metadata: { purpose: 'developer test' },
                 uid: user.uid
             });
-            log(`📤 Payment created: ${payment.identifier}`);
 
-            statusEl.innerHTML = '<span class="icon">⛓️</span><span>Submitting to Testnet...</span>';
             const submitted = await Pi.submitPayment(payment.identifier);
-            log(`⛓️ Submitted: ${submitted.txid}`);
+            const completedPayment = await Pi.completePayment(payment.identifier, submitted.txid);
 
-            statusEl.innerHTML = '<span class="icon">✅</span><span>Finalizing...</span>';
-            const completed = await Pi.completePayment(payment.identifier, submitted.txid);
-            log(`✅ COMPLETE! Tx: ${completed.txid}`);
+            // Success
+            completed++;
+            updateUI();
+            setStatus('✅', `Payment ${completed} of ${TARGET} complete!`);
 
-            completedCount++;
-            updateCounter();
-            statusEl.className = 'status';
-            statusEl.innerHTML = `<span class="icon">✅</span><span>Payment #${completedCount} successful!</span>`;
-            log(`🎉 Payment #${completedCount} done.`);
-
-            if (completedCount >= TARGET) {
-                statusEl.innerHTML = '<span class="icon">🎉</span><span>All 5 done! Submit your Mainnet app now.</span>';
-                btn.disabled = true;
-                btn.innerHTML = '✅ Ready to Submit Application';
+            if (completed >= TARGET) {
+                setStatus('🎉', 'All 5 transactions complete! Your app is ready.');
             }
 
-        } catch (err) {
-            statusEl.className = 'status error';
-            statusEl.innerHTML = `<span class="icon">❌</span><span>Error: ${err.message}</span>`;
-            log(`❌ Payment failed: ${err.message}`);
+        } catch (e) {
+            setStatus('❌', 'Transaction failed. Please try again.', 'error');
         } finally {
             btn.disabled = false;
-            if (completedCount < TARGET) {
+            if (completed < TARGET) {
                 btn.innerHTML = '💸 Send 0.01 Test Pi';
             }
         }
     }
 
+    // On load
     window.onload = function() {
-        log('📱 TAAGC Testnet Demo loaded');
         if (typeof Pi === 'undefined') {
-            log('⚠️ Pi SDK not detected – use Pi Browser');
-            statusEl.className = 'status error';
-            statusEl.innerHTML = '<span class="icon">⚠️</span><span>Open in Pi Browser for Testnet.</span>';
+            setStatus('⚠️', 'Open in Pi Browser to continue', 'error');
         } else {
-            log('✅ Pi SDK detected');
+            setStatus('✅', 'Ready to send <span class="highlight">test Pi</span> payments');
         }
-        updateCounter();
+        updateUI();
     };
 </script>
 
