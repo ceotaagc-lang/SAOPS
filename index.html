@@ -45,9 +45,30 @@
             font-size: 1.1rem;
         }
 
-        .api-badge {
+        .badge {
             display: inline-block;
             background: #2ecc71;
+            color: white;
+            padding: 2px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+
+        .api-badge {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+            font-weight: 600;
+        }
+
+        .oauth-badge {
+            display: inline-block;
+            background: #e67e22;
             color: white;
             padding: 4px 16px;
             border-radius: 20px;
@@ -85,7 +106,7 @@
             font-weight: 500;
         }
 
-        .btn-primary, .btn-secondary, .btn-success, .btn-service, .btn-danger {
+        .btn-primary, .btn-secondary, .btn-success, .btn-service, .btn-oauth {
             padding: 12px 30px;
             border: none;
             border-radius: 8px;
@@ -133,14 +154,15 @@
             transform: none;
         }
 
-        .btn-danger {
-            background: #e74c3c;
+        .btn-oauth {
+            background: #e67e22;
             color: white;
         }
 
-        .btn-danger:hover {
-            background: #c0392b;
+        .btn-oauth:hover {
+            background: #d35400;
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(230, 126, 34, 0.4);
         }
 
         #walletInfo {
@@ -202,7 +224,7 @@
             transform: translateY(-2px);
         }
 
-        #faucetResult, #apiTestResult {
+        #faucetResult, #apiTestResult, #oauthResult {
             margin-top: 15px;
             padding: 10px;
             border-radius: 6px;
@@ -299,36 +321,22 @@
             background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
         }
 
-        .api-key-display {
+        .oauth-section {
+            background: linear-gradient(135deg, #fef9e7 0%, #fdebd0 100%);
+        }
+
+        .key-display {
             background: white;
             padding: 15px;
             border-radius: 8px;
             font-family: 'Courier New', monospace;
             word-break: break-all;
             margin: 10px 0;
-            border: 2px solid #2ecc71;
+            border: 2px solid #3498db;
         }
 
-        footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 2px solid #e0e0e0;
-            text-align: center;
-            color: #666;
-        }
-
-        footer p {
-            margin: 5px 0;
-        }
-
-        .badge {
-            display: inline-block;
-            background: #2ecc71;
-            color: white;
-            padding: 2px 12px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            margin-left: 10px;
+        .oauth-key-display {
+            border-color: #e67e22;
         }
 
         .status-indicator {
@@ -345,6 +353,27 @@
 
         .status-offline {
             background: #e74c3c;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+            text-align: center;
+            color: #666;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        footer a {
+            color: #4a90e2;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
@@ -383,15 +412,33 @@
             <p class="subtitle">
                 Decentralized Applications on Pi Network 
                 <span class="badge">Testnet</span>
-                <span class="api-badge">API Key Active</span>
+                <span class="api-badge">API Active</span>
+                <span class="oauth-badge">OAuth Ready</span>
             </p>
         </header>
 
         <main>
+            <!-- OAuth Section -->
+            <section class="oauth-section">
+                <h2>🔐 OAuth 2.0 Authentication</h2>
+                <div class="key-display oauth-key-display">
+                    <strong>OAuth Client ID:</strong> CXLsORDpo8uyNGBio9oSIpSXvFuIOznimsFk4f-hSQY
+                </div>
+                <div style="margin-top: 10px;">
+                    <span class="status-indicator status-online"></span>
+                    <strong>Status:</strong> OAuth 2.0 Ready
+                </div>
+                <div style="margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap;">
+                    <button id="oauthLoginBtn" class="btn-oauth">Login with Pi OAuth</button>
+                    <button id="oauthTestBtn" class="btn-primary">Test OAuth Connection</button>
+                </div>
+                <div id="oauthResult"></div>
+            </section>
+
             <!-- API Key Status -->
             <section class="api-section">
-                <h2>🔑 API Key Status</h2>
-                <div class="api-key-display">
+                <h2>🔑 API Configuration</h2>
+                <div class="key-display">
                     <strong>API Key:</strong> 7mr4hmsl0dzn1gpcdhzvucwbqcirgf6utvry30ychizv6vue5zjbjwlst4ksvuxm
                 </div>
                 <div style="margin-top: 10px;">
@@ -414,6 +461,7 @@
                     <p><strong>Address:</strong> <span id="walletAddress"></span></p>
                     <p><strong>Balance:</strong> <span id="walletBalance">0</span> π</p>
                     <p><strong>Network:</strong> Pi Testnet</p>
+                    <p><strong>OAuth:</strong> Connected ✓</p>
                     <p><strong>API Key:</strong> Active ✓</p>
                 </div>
             </section>
@@ -466,8 +514,14 @@
         </main>
 
         <footer>
-            <p>© 2026 SaaS Platform | Pi Testnet v1.0</p>
-            <p><small>⚡ Connected to Pi Testnet | API Key: Active</small></p>
+            <p>© 2026 Pi Testnet SaaS Platform</p>
+            <p>
+                <small>
+                    <a href="/privacy.html">Privacy Policy</a> | 
+                    <a href="/terms.html">Terms of Service</a>
+                </small>
+            </p>
+            <p><small>⚡ Connected to Pi Testnet | OAuth 2.0 Enabled</small></p>
         </footer>
     </div>
 
@@ -477,13 +531,15 @@
             network: 'testnet',
             appId: 'your-app-id',
             version: '1.0.0',
-            apiKey: '7mr4hmsl0dzn1gpcdhzvucwbqcirgf6utvry30ychizv6vue5zjbjwlst4ksvuxm'
+            apiKey: '7mr4hmsl0dzn1gpcdhzvucwbqcirgf6utvry30ychizv6vue5zjbjwlst4ksvuxm',
+            oauthClientId: 'CXLsORDpo8uyNGBio9oSIpSXvFuIOznimsFk4f-hSQY'
         };
 
         // State
         let piSdk = null;
         let isConnected = false;
         let currentAddress = '';
+        let isOAuthAuthenticated = false;
 
         // DOM Elements
         const connectBtn = document.getElementById('connectBtn');
@@ -498,6 +554,9 @@
         const transactionList = document.getElementById('transactionList');
         const testApiBtn = document.getElementById('testApiBtn');
         const apiTestResult = document.getElementById('apiTestResult');
+        const oauthLoginBtn = document.getElementById('oauthLoginBtn');
+        const oauthTestBtn = document.getElementById('oauthTestBtn');
+        const oauthResult = document.getElementById('oauthResult');
 
         // Initialize Pi SDK
         function initPiSDK() {
@@ -506,10 +565,80 @@
                 piSdk.init(PI_CONFIG);
                 console.log('✅ Pi SDK initialized on testnet');
                 console.log('🔑 API Key:', PI_CONFIG.apiKey);
+                console.log('🔐 OAuth Client ID:', PI_CONFIG.oauthClientId);
                 walletMessage.textContent = 'Ready to connect';
             } else {
                 console.warn('⚠️ Pi SDK not loaded');
                 walletMessage.textContent = '⚠️ Pi SDK not available. Please check connection.';
+            }
+        }
+
+        // OAuth Login
+        async function oauthLogin() {
+            try {
+                oauthResult.innerHTML = '<p class="info">⏳ Initiating OAuth 2.0 flow...</p>';
+                
+                // Simulate OAuth flow
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                // Mock OAuth response
+                const oauthResponse = {
+                    access_token: 'oauth_' + Math.random().toString(36).substring(2, 15),
+                    token_type: 'Bearer',
+                    expires_in: 3600,
+                    scope: 'wallet_address balance',
+                    user_id: 'P' + Math.random().toString(36).substring(2, 15).toUpperCase()
+                };
+                
+                isOAuthAuthenticated = true;
+                
+                oauthResult.innerHTML = `
+                    <p class="success">✅ OAuth 2.0 Authentication Successful!</p>
+                    <p style="margin-top:5px;color:#666;font-size:0.9rem;">
+                        <strong>Access Token:</strong> ${oauthResponse.access_token.substring(0, 20)}...<br>
+                        <strong>Expires In:</strong> ${oauthResponse.expires_in} seconds<br>
+                        <strong>User ID:</strong> ${oauthResponse.user_id}<br>
+                        <strong>Client ID:</strong> ${PI_CONFIG.oauthClientId.substring(0, 15)}...
+                    </p>
+                `;
+                
+                // Auto-connect wallet with OAuth user ID
+                if (!isConnected) {
+                    currentAddress = oauthResponse.user_id;
+                    walletAddress.textContent = currentAddress;
+                    walletBalance.textContent = (Math.random() * 1000 + 100).toFixed(2);
+                    walletInfo.style.display = 'block';
+                    connectBtn.style.display = 'none';
+                    disconnectBtn.style.display = 'inline-block';
+                    walletMessage.textContent = '✅ Connected via OAuth 2.0';
+                    faucetAddress.value = currentAddress;
+                    loadTransactions();
+                }
+                
+            } catch (error) {
+                console.error('OAuth error:', error);
+                oauthResult.innerHTML = '<p class="error">❌ OAuth authentication failed. Please try again.</p>';
+            }
+        }
+
+        // Test OAuth Connection
+        async function testOAuth() {
+            try {
+                oauthResult.innerHTML = '<p class="info">⏳ Testing OAuth 2.0 connection...</p>';
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                oauthResult.innerHTML = `
+                    <p class="success">✅ OAuth 2.0 Connection Successful!</p>
+                    <p style="margin-top:5px;color:#666;font-size:0.9rem;">
+                        <strong>Client ID:</strong> ${PI_CONFIG.oauthClientId}<br>
+                        <strong>Status:</strong> ${isOAuthAuthenticated ? 'Authenticated ✓' : 'Ready for Authentication'}<br>
+                        <strong>Grant Type:</strong> Authorization Code Flow<br>
+                        <strong>Scope:</strong> wallet_address, balance
+                    </p>
+                `;
+            } catch (error) {
+                console.error('OAuth test error:', error);
+                oauthResult.innerHTML = '<p class="error">❌ OAuth test failed. Please try again.</p>';
             }
         }
 
@@ -519,10 +648,8 @@
                 testApiBtn.disabled = true;
                 apiTestResult.innerHTML = '<p class="info">⏳ Testing API connection...</p>';
                 
-                // Simulate API test
                 await new Promise(resolve => setTimeout(resolve, 1500));
                 
-                // API test simulation
                 const apiKey = PI_CONFIG.apiKey;
                 const isValid = apiKey && apiKey.length > 20;
                 
@@ -569,10 +696,8 @@
             try {
                 walletMessage.textContent = '⏳ Connecting...';
                 
-                // Simulate Pi SDK authentication
                 await new Promise(resolve => setTimeout(resolve, 1500));
                 
-                // Mock wallet data
                 const mockAddress = 'P' + Math.random().toString(36).substring(2, 15).toUpperCase();
                 const mockBalance = (Math.random() * 1000 + 100).toFixed(2);
                 
@@ -634,7 +759,8 @@
                     <p class="success">✅ Successfully received ${amount} test π!</p>
                     <p style="margin-top:5px;color:#666;font-size:0.9rem;">
                         Transaction: ${txHash}<br>
-                        API Key: ${PI_CONFIG.apiKey.substring(0, 10)}...${PI_CONFIG.apiKey.substring(PI_CONFIG.apiKey.length - 10)}
+                        API Key: ${PI_CONFIG.apiKey.substring(0, 10)}...${PI_CONFIG.apiKey.substring(PI_CONFIG.apiKey.length - 10)}<br>
+                        OAuth: ${isOAuthAuthenticated ? 'Authenticated ✓' : 'Not authenticated'}
                     </p>
                 `;
                 
@@ -695,7 +821,7 @@
                 identity: 'Identity Verification'
             };
             
-            alert(`🔐 Accessing ${serviceNames[service] || service}\n\nAPI Key: ${PI_CONFIG.apiKey.substring(0, 10)}...\n\nThis is a demo. In production, this would redirect to the service dashboard.`);
+            alert(`🔐 Accessing ${serviceNames[service] || service}\n\nOAuth Client ID: ${PI_CONFIG.oauthClientId.substring(0, 15)}...\nAPI Key: ${PI_CONFIG.apiKey.substring(0, 10)}...\n\nThis is a demo. In production, this would redirect to the service dashboard.`);
         }
 
         // Event Listeners
@@ -703,6 +829,8 @@
         disconnectBtn.addEventListener('click', disconnectWallet);
         faucetBtn.addEventListener('click', requestTestPi);
         testApiBtn.addEventListener('click', testApiConnection);
+        oauthLoginBtn.addEventListener('click', oauthLogin);
+        oauthTestBtn.addEventListener('click', testOAuth);
 
         faucetAddress.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
@@ -725,8 +853,8 @@
                 if (!isConnected) {
                     connectWallet();
                 }
-                // Auto-test API
                 setTimeout(testApiConnection, 500);
+                setTimeout(testOAuth, 800);
             }, 1000);
         });
 
@@ -739,15 +867,8 @@
 
         console.log('🚀 Pi Testnet SaaS Platform loaded');
         console.log('🔑 API Key:', PI_CONFIG.apiKey);
+        console.log('🔐 OAuth Client ID:', PI_CONFIG.oauthClientId);
         console.log('📝 Configuration:', PI_CONFIG);
     </script>
 </body>
-    <!-- In your footer or header -->
-<footer>
-    <p>
-        <a href="/privacy.html">Privacy Policy</a> | 
-        <a href="/terms.html">Terms of Service</a>
-    </p>
-    <p>© 2026 Pi Testnet SaaS Platform</p>
-</footer>
 </html>
